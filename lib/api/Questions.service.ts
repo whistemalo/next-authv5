@@ -1,8 +1,10 @@
 
-import { QuestionCategory } from "@/types/checklistType";
+import { Checklist, QuestionCategory } from "@/types/checklistType";
 import { validateEnvLaravelApi } from "../misc/validations";
+import { log } from "../misc/logger";
+import { API_URL } from "@/constants";
 
-async function fetthFromLaravel(url:URL, cacheTime?:number) {
+async function fetchFromLaravel(url:URL, cacheTime?:number) {
 
     const options: RequestInit= {
         method: "GET",
@@ -11,9 +13,9 @@ async function fetthFromLaravel(url:URL, cacheTime?:number) {
             accept: "application/json",
             "Content-Type": "application/json"
         },
-        // next:{
-        //     revalidate: cacheTime || 60 * 60 * 24 // 24 hours default
-        // }
+        next:{
+            revalidate: cacheTime || 60 * 60 * 24 // 24 hours default
+        }
     };
 
     try {
@@ -24,15 +26,22 @@ async function fetthFromLaravel(url:URL, cacheTime?:number) {
         console.error("Error fetching data from laravel", error);
         throw error;
     }
-
-  
 }
 
 
 export async function getQuestions() {
     validateEnvLaravelApi();
     const path = "/ctl-questions";
-    console.log(`process.env.API_URL: ${process.env.API_URL}${path}`);
     const url = new URL(`${process.env.API_URL}${path}`);
-    return fetthFromLaravel(url) as Promise<QuestionCategory[]>;
+    log("Fetching questions from laravel:"+url.toString());
+    return fetchFromLaravel(url) as Promise<Checklist[]>;
 }
+
+export async function getQuestionCategories() {
+    validateEnvLaravelApi();
+    const path = "/ctl-questions-categories";
+    const url = new URL(`${process.env.API_URL}${path}`);
+    log("Fetching question categories from laravel:"+url.toString());
+    return fetchFromLaravel(url) as Promise<QuestionCategory[]>;
+}
+

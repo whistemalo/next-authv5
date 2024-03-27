@@ -1,5 +1,5 @@
 "use client";
-import { QuestionCategory } from "@/types/checklistType";
+import { Checklist } from "@/types/checklistType";
 import React, { useState, useTransition } from "react";
 import {
   Accordion,
@@ -29,7 +29,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "../ui/label";
 
 type Props = {
-  QuestionsCategories: QuestionCategory[];
+  QuestionsCategories: Checklist[];
 };
 
 export default function CategoriesAccordion({ QuestionsCategories }: Props) {

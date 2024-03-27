@@ -12,5 +12,11 @@ export type Question = {
 export type QuestionCategory = {
     id: number;
     name: string;
-    questions: Question[];
+    img: string;
+};
+
+export type Checklist = {
+    id: number;
+    name: string;
+    categories: QuestionCategory[];
 };

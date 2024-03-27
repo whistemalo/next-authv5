@@ -2,6 +2,8 @@ import { Icon } from '@iconify/react';
 import { SideNavItem } from './types/navBar';
 
 
+export const API_URL = 'localhost:91/api/';
+
 
 export const SIDENAV_ITEMS: SideNavItem[] = [
   {

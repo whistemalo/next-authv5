@@ -6,17 +6,6 @@ import {
 } from "@/components/ui/popover";
 import { Button } from "../ui/button";
 import {
-  Command,
-  CommandDialog,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-  CommandSeparator,
-  CommandShortcut,
-} from "@/components/ui/command";
-import {
   Card,
   CardContent,
   CardHeader,
@@ -25,6 +14,18 @@ import {
 } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ArrowUpRight, FileDown, MoveRight } from "lucide-react";
+import Link from "next/link";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 
 export function PendingChecklist() {
   return (
@@ -66,16 +67,33 @@ export function PendingChecklist() {
               <p className="text-sm text-muted-foreground">Pendiente</p>
             </div>
           </div>
-          <Button variant="outline" className="ml-auto">
-            Completar <ArrowUpRight />
-          </Button>
+          <Link href="/checklist">
+            <Button variant="outline" className="ml-auto">
+              Completar <ArrowUpRight />
+            </Button>
+          </Link>
         </div>
 
-        <div className=" items-center flex justify-center w-full">
-            <Button variant="affirmative" className="w-48">
-                Finalizar Turno 
-            </Button>
-        </div>
+        <AlertDialog>
+          <div className=" items-center flex justify-center w-full">
+            <AlertDialogTrigger asChild>
+              <Button variant="outline">Finlizar turno</Button>
+            </AlertDialogTrigger>
+          </div>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+              <AlertDialogDescription>
+                This action cannot be undone. This will permanently delete your
+                account and remove your data from our servers.
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel>Cancel</AlertDialogCancel>
+              <AlertDialogAction>Continue</AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
       </CardContent>
     </Card>
   );

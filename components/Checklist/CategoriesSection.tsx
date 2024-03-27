@@ -6,9 +6,9 @@ type Props = {
   questionCategories: QuestionCategory[];
 };
 
-export default function CategoriesSection({ questionCategories }: Props) {
+export default async function CategoriesSection({ questionCategories }: Props) {
   return (
-    <div className="p-24 flex flex-wrap ">
+    <div className=" flex flex-wrap items-center justify-center ">
       {questionCategories.map((questionCategory) => (
         <div className="m-2">
           <CategorieCard

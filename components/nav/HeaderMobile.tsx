@@ -39,10 +39,7 @@ const HeaderMobile = () => {
   const { height } = useDimensions(containerRef);
   const [isOpen, toggleOpen] = useCycle(false, true);
 
-  //   use a use effect to console log the subMenuOpen state
-  useEffect(() => {
-    console.log(isOpen);
-}, [isOpen]);
+
 
 
   return (

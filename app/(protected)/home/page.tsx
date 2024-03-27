@@ -9,7 +9,7 @@ type Props = {};
 
 export default async function Home({}: Props) {
   return (
-    <div className=" max-w-7xl items-start mx-auto h-full text-secondary w-full ">
+    <div className="max-w-7xl items-start mx-auto h-full text-secondary w-full ">
       <div className="flex flex-row  w-full p-8 space-x-3">
         <ProfilePicture />
         <ShiftInfo />

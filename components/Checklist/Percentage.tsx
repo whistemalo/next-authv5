@@ -4,45 +4,47 @@ type Props = {};
 
 function Percentage({}: Props) {
   return (
-    <div>
-      <div
-        x-data="skillDisplay"
-        // className="p-6 space-y-6 bg-gray-800 rounded-xl md:grid md:grid-cols-2 md:gap-4 sm:space-y-0"
-      >
+    <div className="relative w-40 h-40 text-white">
+      <svg className="w-full h-full" viewBox="0 0 100 100">
+        {/* Background circle */}
+        <circle
+          className="text-gray-200 stroke-current"
+          strokeWidth="10"
+          cx="50"
+          cy="50"
+          r="40"
+          fill="transparent"
+        ></circle>
+        {/* Progress circle */}
+        <circle
+          className="text-indigo-500 progress-ring__circle stroke-current"
+          strokeWidth="10"
+          strokeLinecap="round"
+          cx="50"
+          cy="50"
+          r="40"
+          fill="transparent"
+          style={{
+            strokeDasharray: 400,
+            strokeDashoffset: 400 - (400 * 45) / 100,
+          }}
+        ></circle>
 
-        <div
-          className="flex items-center justify-center"
-          x-data="{ circumference: 2 * 22 / 7 * 120 }"
+        {/* Center text */}
+        <text
+          x="50"
+          y="50"
+          fontFamily="Verdana"
+          fontSize="12"
+          textAnchor="middle"
+          alignmentBaseline="middle"
+          style={{ fill: "white", fontWeight: "bold" }}
         >
-          <svg className="transform -rotate-90 w-72 h-72">
-            <circle
-              cx="145"
-              cy="145"
-              r="120"
-              stroke="currentColor"
-              stroke-width="30"
-              fill="transparent"
-              className="text-gray-700"
-            />
+          70%
+        </text>
 
-            <circle
-              cx="145"
-              cy="145"
-              r="120"
-              stroke="currentColor"
-              stroke-width="30"
-              fill="transparent"
-              // :stroke-dasharray="circumference"
-              // :stroke-dashoffset="circumference - currentSkill.percent / 100 * circumference"
-              className="text-blue-500 "
-            />
-          </svg>
-          <span
-            className="absolute text-5xl"
-            x-text="`${currentSkill.percent}%`"
-          ></span>
-        </div>
-      </div>
+        <h1 className="text-center text-4xl font-bold text-white">45%</h1>
+      </svg>
     </div>
   );
 }

@@ -12,6 +12,7 @@ export default async function Checklist({}: Props) {
        <h1>Checklist</h1>
        {/* <Percentage /> */}
        <CategoriesSection 
+          
           questionCategories={questionCategories}
        />
      </div>

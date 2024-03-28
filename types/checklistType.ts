@@ -7,6 +7,8 @@ export type Question = {
     id: number;
     question: string;
     answers: Answer[];
+    last_answer?: Answer;
+    comment?: string;
 };
 
 export type QuestionCategory = {

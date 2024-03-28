@@ -19,10 +19,6 @@ const MAX_FILE_SIZE = 5000000;
 const ACCEPTED_IMAGE_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
 
 
-export const AnswerSchema = z.record(
-  z.object({
-    answer: z.string({ required_error: "La respuesta es obligatoria"}),
-    comment: z.optional(z.string()),
-    file: typeof window === 'undefined' ? z.any() : z.instanceof(FileList)  
-  })
-);
+export const AnswerSchema = z.object({
+  comment: z.optional(z.string().min(1, "El comentario es obligatorio")),
+});
